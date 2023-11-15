@@ -1,0 +1,22 @@
+{
+  "name": "nodejs_estudos",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mandacosta/nodejs_estudos.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mandacosta/nodejs_estudos/issues"
+  },
+  "homepage": "https://github.com/mandacosta/nodejs_estudos#readme"
+}
