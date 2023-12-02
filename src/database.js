@@ -39,4 +39,13 @@ export class Database{
 
         return data
     }
+
+    delete(table, id){
+        const index = this.#database[table].findIndex(user=> user.id == id)
+
+        if(index > -1){
+            this.#database[table].splice(index, 1)
+            this.#persist()
+        }
+    }
 }
