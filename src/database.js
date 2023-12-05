@@ -22,10 +22,23 @@ export class Database{
         fs.writeFile(pathname, JSON.stringify(this.#database))
     }
 
-    select(table){
+    select(table, searchParams=null){
         const data = this.#database[table] ?? []
 
-        return data
+        let filter = data.filter((row) => {
+            console.log("row", row)
+            
+            for(let key in searchParams){
+                console.log("value", searchParams[key])
+                return row[key].toLowerCase().includes(searchParams[key].toLowerCase())
+            }
+        })
+
+        if(!searchParams || !filter.length){
+            return data
+        }
+
+        return filter
     }
 
     insert(table, data){
@@ -45,6 +58,15 @@ export class Database{
 
         if(index > -1){
             this.#database[table].splice(index, 1)
+            this.#persist()
+        }
+    }
+
+    update(table, id, data){
+        const index = this.#database[table].findIndex(user=> user.id == id)
+
+        if(index > -1){
+            this.#database[table][index] = {id, ...data}
             this.#persist()
         }
     }

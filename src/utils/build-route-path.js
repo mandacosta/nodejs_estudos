@@ -10,7 +10,7 @@ export function buildRoutePath (path){
     // Para que no final a url consiga encontrar um match com qualquer valor sendo passado no caminho
     const pathWithParams = path.replaceAll(routeParametersRegex, '(?<$1>[a-z0-9\-_]+)')
 
-    const pathRegex = new RegExp(`^${pathWithParams}`)
+    const pathRegex = new RegExp(`^${pathWithParams}(?<query>\\?(.*))?$`)
 
     
     // console.log(Array.from(path.matchAll(routeParametersRegex)))
